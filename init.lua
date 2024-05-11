@@ -47,10 +47,12 @@ packer.startup(function(use)
       },
     })
 
-    vim.cmd [[colorscheme murphy]]
     vim.g.copilot_no_tab_map = true;
   end
 end)
+
+-- Set colorscheme
+vim.cmd [[colorscheme codedark]]
 
 -- Disable netrw
 vim.g.loaded_netrw = 1
