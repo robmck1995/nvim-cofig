@@ -25,6 +25,20 @@ packer.startup(function(use)
   use 'jremmen/vim-ripgrep'
   use 'neoclide/coc.nvim'
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+  use({
+    "jackMort/ChatGPT.nvim",
+      config = function()
+          require("chatgpt").setup({
+              api_key_cmd = "cat openai_key.txt"
+          })
+      end,
+      requires = {
+        "MunifTanjim/nui.nvim",
+        "nvim-lua/plenary.nvim",
+        "folke/trouble.nvim",
+        "nvim-telescope/telescope.nvim"
+      }
+  })
 
   -- Post-plugin-load configurations
   packer.on_complete = function()
@@ -72,6 +86,7 @@ vim.opt.wildignore:append("node_modules/*")
 
 -- Keymaps
 vim.keymap.set({'n'}, '<Leader>t', '<cmd>CommandT<cr>')
+vim.keymap.set({'n'}, '<Leader>c', '<cmd>ChatGPT<cr>')
 vim.keymap.set({'n'}, '<Leader>w', '<cmd>NvimTreeOpen<cr>')
 vim.keymap.set({'n'}, '<Leader>r', '<cmd>Telescope live_grep<cr>')
 
